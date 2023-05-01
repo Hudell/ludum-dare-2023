@@ -7,7 +7,7 @@ func _physics_process(delta):
 	if Global.caught_by_dog:
 		return
 
-	if $PlayerDetector.can_see_player() && Global.player_volume_level >= 0.98:
+	if $PlayerDetector.can_see_player() && Global.player_volume_level > 0.99:
 		Global.caught_by_dog = true
 		$AnimationPlayer.play("wake")
 
