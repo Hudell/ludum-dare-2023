@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://btq5pyfcrnmbo"]
+
+[ext_resource type="PackedScene" uid="uid://lj556bic6wni" path="res://source/npc.tscn" id="1_3sde0"]
+[ext_resource type="Texture2D" uid="uid://vhtei80clgra" path="res://assets/img/npc5.png" id="2_c7pid"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_v08gp"]
+
+[node name="NPC5" instance=ExtResource("1_3sde0")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_c7pid")
+
+[node name="AnimationTree" parent="." index="2"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_v08gp")

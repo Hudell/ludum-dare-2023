@@ -58,3 +58,14 @@ func set_player_at_spawn_pos():
 	player.global_position = point.global_position
 	if point.direction != Vector2.ZERO:
 		player.set_direction(point.direction)
+
+
+func _on_player_detector_player_seen():
+	Global.in_yard = true
+
+func _on_player_detector_player_lost():
+	Global.in_yard = false
+
+func _on_exit_player_seen():
+	if Global.got_box:
+		pass

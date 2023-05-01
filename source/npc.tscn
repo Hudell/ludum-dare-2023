@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://lj556bic6wni"]
+[gd_scene load_steps=41 format=3 uid="uid://lj556bic6wni"]
 
 [ext_resource type="Script" path="res://source/npc.gd" id="1_svqrw"]
 [ext_resource type="Texture2D" uid="uid://cx0g3ud5dravy" path="res://assets/img/npc1.png" id="2_pfuus"]
 [ext_resource type="PackedScene" uid="uid://csr72687hk4ee" path="res://source/player/player_detector.tscn" id="3_f77qh"]
 [ext_resource type="Texture2D" uid="uid://dl8l17lvf63bg" path="res://assets/img/exclamation.png" id="4_jdj8u"]
+[ext_resource type="Texture2D" uid="uid://cuxp2p4n8epoc" path="res://assets/img/detection_range.png" id="4_sln0u"]
 
 [sub_resource type="Animation" id="Animation_kni5c"]
 resource_name = "IdleDown"
@@ -348,6 +349,9 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 radius = 2.0
 height = 14.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c3q3x"]
+blend_mode = 1
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xognh"]
 atlas = ExtResource("4_jdj8u")
 region = Rect2(0, 0, 11, 22)
@@ -442,6 +446,18 @@ one_shot = true
 [node name="Pivot" type="Marker2D" parent="."]
 
 [node name="PlayerDetector" parent="Pivot" instance=ExtResource("3_f77qh")]
+monitoring = false
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Pivot/PlayerDetector"]
+visible = false
+polygon = PackedVector2Array(-4, 0, -56, 83, -40, 95, -10, 102, 17, 101, 42, 94, 59, 81, 4, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+modulate = Color(1, 1, 1, 0.352941)
+material = SubResource("CanvasItemMaterial_c3q3x")
+position = Vector2(-56, 0)
+texture = ExtResource("4_sln0u")
+centered = false
 
 [node name="Exclamation" type="AnimatedSprite2D" parent="."]
 z_index = 10

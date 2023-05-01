@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckiglj5u4da7a"]
+
+[ext_resource type="Texture2D" uid="uid://cjpia6qum2mpt" path="res://assets/img/box.png" id="1_m6qpm"]
+[ext_resource type="PackedScene" uid="uid://csr72687hk4ee" path="res://source/player/player_detector.tscn" id="2_2fswt"]
+[ext_resource type="Script" path="res://source/box.gd" id="2_jo3mj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t5ok"]
+
+[node name="Box" type="Sprite2D"]
+texture = ExtResource("1_m6qpm")
+script = ExtResource("2_jo3mj")
+
+[node name="PlayerDetector" parent="." instance=ExtResource("2_2fswt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("RectangleShape2D_2t5ok")
+
+[connection signal="player_seen" from="PlayerDetector" to="." method="_on_player_detector_player_seen"]

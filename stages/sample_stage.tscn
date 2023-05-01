@@ -1,13 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0nkyb3vc6rpn"]
+[gd_scene load_steps=11 format=3 uid="uid://c0nkyb3vc6rpn"]
 
 [ext_resource type="PackedScene" uid="uid://d30fr6vnokm48" path="res://source/map/map.tscn" id="1_nk5kv"]
 [ext_resource type="PackedScene" uid="uid://lj556bic6wni" path="res://source/npc.tscn" id="2_tr5pa"]
 [ext_resource type="PackedScene" uid="uid://bmtr0w8oy0x6f" path="res://source/map/route_point.tscn" id="3_6y6ek"]
-[ext_resource type="Texture2D" uid="uid://0hvtpoowixr6" path="res://assets/img/npc2.png" id="3_ak0r5"]
 [ext_resource type="PackedScene" uid="uid://dhtvq0bluivp6" path="res://source/map/house.tscn" id="4_5ho55"]
 [ext_resource type="PackedScene" uid="uid://dnhxhnmlrp60l" path="res://source/dog.tscn" id="5_boa4p"]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_uae0r"]
+[ext_resource type="PackedScene" uid="uid://dsvby380vfrri" path="res://source/npc_2.tscn" id="5_rm8d7"]
+[ext_resource type="PackedScene" uid="uid://yb4cpgajtjiw" path="res://source/npc_3.tscn" id="6_48sdy"]
+[ext_resource type="PackedScene" uid="uid://csb1eq31xdjnj" path="res://source/npc_4.tscn" id="7_3tbns"]
+[ext_resource type="PackedScene" uid="uid://btq5pyfcrnmbo" path="res://source/npc_5.tscn" id="8_3c2xd"]
+[ext_resource type="PackedScene" uid="uid://b8sohs8at6tdo" path="res://source/npc_6.tscn" id="9_0cdyu"]
 
 [node name="SampleStage" instance=ExtResource("1_nk5kv")]
 position = Vector2(0, 1)
@@ -18,46 +20,43 @@ layer_1/tile_data = PackedInt32Array(1179668, 0, 4, 1179663, 0, 4, 1048589, 1966
 offset_right = 882.0
 offset_bottom = 528.0
 
-[node name="Fences" parent="." index="1"]
+[node name="Fences" parent="." index="2"]
 layer_0/tile_data = PackedInt32Array(917515, 131073, 1, 851979, 131073, 0, 786443, 131073, 0, 720907, 131073, 0, 917514, 131073, 1, 917512, 131073, 1, 917513, 131073, 1, 917511, 65537, 1, 851975, 131073, 0, 786439, 131073, 0, 720903, 131073, 0, 655371, 1, 1, 655370, 131073, 1, 655369, 131073, 1, 655368, 131073, 1, 655367, 131073, 0)
 
-[node name="Player" parent="." index="2"]
-z_index = 1
+[node name="Player" parent="." index="3"]
 position = Vector2(549, 164)
 
-[node name="Camera2D" parent="Player" index="4"]
+[node name="Camera2D" parent="Player" index="5"]
 position = Vector2(1, -8)
 limit_right = 882
 limit_bottom = 528
-
-[node name="Objects" parent="." index="3"]
-y_sort_enabled = true
 
 [node name="NPC" parent="Objects" index="0" instance=ExtResource("2_tr5pa")]
 position = Vector2(224, 81)
 route = NodePath("../../Routes/TesteRota")
 
-[node name="NPC2" parent="Objects" index="1" instance=ExtResource("2_tr5pa")]
-position = Vector2(204, 22)
-route = NodePath("../../Routes/TesteRota")
-
-[node name="Sprite2D" parent="Objects/NPC2" index="0"]
-texture = ExtResource("3_ak0r5")
-metadata/_edit_lock_ = true
-
-[node name="AnimationTree" parent="Objects/NPC2" index="2"]
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_uae0r")
-
-[node name="CollisionShape2D" parent="Objects/NPC2" index="3"]
-metadata/_edit_lock_ = true
-
-[node name="House" parent="Objects" index="2" instance=ExtResource("4_5ho55")]
+[node name="House" parent="Objects" index="1" instance=ExtResource("4_5ho55")]
 position = Vector2(676, 135)
 
-[node name="Dog" parent="Objects" index="3" instance=ExtResource("5_boa4p")]
+[node name="Dog" parent="Objects" index="2" instance=ExtResource("5_boa4p")]
 position = Vector2(448, 79)
 
-[node name="MapEdges" parent="." index="5"]
+[node name="NPC2" parent="Objects" index="3" instance=ExtResource("5_rm8d7")]
+position = Vector2(528, 303)
+
+[node name="NPC3" parent="Objects" index="4" instance=ExtResource("6_48sdy")]
+position = Vector2(72, 255)
+
+[node name="NPC4" parent="Objects" index="5" instance=ExtResource("7_3tbns")]
+position = Vector2(832, 55)
+
+[node name="NPC5" parent="Objects" index="6" instance=ExtResource("8_3c2xd")]
+position = Vector2(368, 239)
+
+[node name="NPC6" parent="Objects" index="7" instance=ExtResource("9_0cdyu")]
+position = Vector2(792, 295)
+
+[node name="MapEdges" parent="." index="6"]
 visible = true
 
 [node name="LeftEdge" parent="MapEdges" index="0"]
@@ -86,4 +85,4 @@ position = Vector2(299, 160)
 [node name="RoutePoint4" parent="Routes/TesteRota" index="3" instance=ExtResource("3_6y6ek")]
 position = Vector2(225, 161)
 
-[editable path="Objects/NPC2"]
+[editable path="PlayerDetector"]

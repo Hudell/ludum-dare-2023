@@ -3,7 +3,7 @@ extends CharacterBody2D
 func _ready():
 	$Exclamation.visible = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Global.caught_by_dog:
 		return
 

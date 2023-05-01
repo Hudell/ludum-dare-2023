@@ -27,8 +27,12 @@ func load_route_node():
 		routeTimer.stop()
 
 func _ready():
+	Global.connect("in_yard_changed", Callable(self, "player_in_yard_changed"))
 	$Exclamation.visible = false
 	load_route_node()
+
+func _exit_tree():
+	Global.disconnect("in_yard_changed", Callable(self, "player_in_yard_changed"))
 	
 func set_route(value):
 	if route == value:
@@ -182,7 +186,10 @@ func on_reach_point(point, _is_route = true):
 func _on_player_detector_player_seen():
 	$Exclamation.play("default")
 	$Exclamation.visible = true
-	Global.got_caught()
 
 func _on_exclamation_animation_finished():
 	$Exclamation.visible = false
+	Global.got_caught()
+
+func player_in_yard_changed():
+	$Pivot/PlayerDetector.monitoring = Global.in_yard || Global.got_box

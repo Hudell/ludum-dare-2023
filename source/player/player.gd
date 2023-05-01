@@ -33,12 +33,14 @@ var last_direction = Vector2.DOWN
 @onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback")
-#@onready var hurtbox = $Hurtbox
-#@onready var objectDetection = $Pivot/ObjectDetection
 
 func _ready():
+	Global.connect("player_got_box", Callable(self, "get_box"))
 	animationTree.active = true
 	update_direction()
+
+func _exit_tree():
+	Global.disconnect("player_got_box", Callable(self, "get_box"))
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():
@@ -58,6 +60,8 @@ func set_direction(value):
 func update_direction():
 	animationTree.set("parameters/Idle/blend_position", last_direction)
 	animationTree.set("parameters/Walk/blend_position", last_direction)
+	animationTree.set("parameters/IdleBox/blend_position", last_direction)
+	animationTree.set("parameters/WalkBox/blend_position", last_direction)
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO
@@ -66,18 +70,25 @@ func move_state(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		if input_vector.x == 0:
+		if input_vector.x == 0 || ((input_vector.x < 0) == (velocity.x > 0)):
 			velocity.x = 0
-		elif input_vector.y == 0:
+		
+		if input_vector.y == 0 || ((input_vector.y < 0) == (velocity.y > 0)):
 			velocity.y = 0
 		
 		last_direction = input_vector
 		update_direction()
 
-		animationState.travel("Walk")
+		if Global.got_box:
+			animationState.travel("WalkBox")
+		else:
+			animationState.travel("Walk")
 		velocity = velocity.move_toward(input_vector * max_speed, ACCELERATION * delta)
 	else:
-		animationState.travel("Idle")
+		if Global.got_box:
+			animationState.travel("IdleBox")
+		else:
+			animationState.travel("Idle")
 		velocity = Vector2.ZERO
 
 	if !Global.caught_by_dog:
@@ -88,21 +99,13 @@ func move_state(delta):
 		else:
 			Global.player_volume_level = 0
 	
-	move_and_slide()
+	if Global.got_box != $BoxSprite.visible:
+		$BoxSprite.visible = Global.got_box
 	
-#	if is_action_just_pressed("interact") && interact():
-#		return
-
-func interact():
-#	var areas = objectDetection.get_overlapping_areas()
-#	if areas.size() > 0:
-#		for area in areas:
-#			Global.failed_interaction = false
-#			if area.has_method('interact') && area.call('interact'):
-#				if !Global.failed_interaction:
-#					return true
-
-	return false
+	move_and_slide()
 	
 func is_action_just_pressed(action):
 	return Input.is_action_just_pressed(action)
+
+func get_box():
+	pass
