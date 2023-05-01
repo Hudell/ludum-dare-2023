@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cavduaptd6mqr"]
+[gd_scene load_steps=3 format=3 uid="uid://cavduaptd6mqr"]
 
 [ext_resource type="Script" path="res://source/game.gd" id="1_mxv6x"]
+[ext_resource type="PackedScene" uid="uid://btc0b1p2uu504" path="res://source/scenes/hud.tscn" id="2_sjc4i"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_mxv6x")
 
 [node name="MapHolder" type="Node" parent="."]
+
+[node name="Hud" parent="." instance=ExtResource("2_sjc4i")]

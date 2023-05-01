@@ -5,8 +5,14 @@ var map_name = ''
 
 var is_loading = false
 var is_new_game = false
+var player_volume_level = 0.0:
+	set(value):
+		if value != player_volume_level:
+			player_volume_level = value
+			emit_signal("player_volume_changed", value)
 
 signal map_changed
+signal player_volume_changed
 
 func new_game():
 	map_spawn_name = 'default'
@@ -22,3 +28,4 @@ func change_map(new_map, spawn_name = 'default'):
 	map_name = new_map
 	map_spawn_name = spawn_name
 	emit_signal("map_changed", new_map)
+

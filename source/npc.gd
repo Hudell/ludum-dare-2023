@@ -159,7 +159,7 @@ func stop_route_timer():
 	
 	routeTimer.start()
 
-func on_reach_point(point, is_route = true):
+func on_reach_point(point, _is_route = true):
 	match point.direction_to_face:
 		"Left":
 			set_direction(Vector2.LEFT)

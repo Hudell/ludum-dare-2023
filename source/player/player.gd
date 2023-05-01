@@ -18,7 +18,7 @@ extends CharacterBody2D
 				"Up":
 					set_direction(Vector2.UP)
 
-const ACCELERATION = 400.0
+const ACCELERATION = 100.0
 const FRICTION = 500.0
 const BASE_SPEED = 70
 
@@ -78,7 +78,12 @@ func move_state(delta):
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-		
+	
+	if !Engine.is_editor_hint():
+		var speed_rate = velocity.length() / max_speed
+		if speed_rate != Global.player_volume_level:
+			Global.player_volume_level = speed_rate
+	
 	move_and_slide()
 	
 #	if is_action_just_pressed("interact") && interact():
