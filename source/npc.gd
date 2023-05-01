@@ -27,6 +27,7 @@ func load_route_node():
 		routeTimer.stop()
 
 func _ready():
+	$Exclamation.visible = false
 	load_route_node()
 	
 func set_route(value):
@@ -178,3 +179,9 @@ func on_reach_point(point, _is_route = true):
 #	else:
 #		emit_signal('target_position_reached')
 
+func _on_player_detector_player_seen():
+	$Exclamation.play("default")
+	$Exclamation.visible = true
+
+func _on_exclamation_animation_finished():
+	$Exclamation.visible = false
