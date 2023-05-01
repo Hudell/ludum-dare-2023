@@ -5,6 +5,7 @@ var map_name = ''
 
 var is_loading = false
 var is_new_game = false
+var caught_by_dog = false
 var in_dog_range = false:
 	set(value):
 		in_dog_range = value
@@ -24,6 +25,7 @@ signal in_dog_range_change
 func new_game():
 	map_spawn_name = 'default'
 	map_name = 'sample_stage'
+	caught_by_dog = false
 	is_new_game = true
 	is_loading = true
 
@@ -38,3 +40,8 @@ func change_map(new_map, spawn_name = 'default'):
 
 func got_caught():
 	emit_signal("player_caught")
+
+func restart():
+	caught_by_dog = false
+	get_tree().paused = false
+	change_map(map_name, map_spawn_name)

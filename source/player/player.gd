@@ -80,12 +80,13 @@ func move_state(delta):
 		animationState.travel("Idle")
 		velocity = Vector2.ZERO
 
-	if Global.in_dog_range:
-		var speed_rate = velocity.length() / max_speed
-		if speed_rate != Global.player_volume_level:
-			Global.player_volume_level = move_toward(Global.player_volume_level, speed_rate, 0.025)
-	else:
-		Global.player_volume_level = 0
+	if !Global.caught_by_dog:
+		if Global.in_dog_range:
+			var speed_rate = velocity.length() / max_speed
+			if speed_rate != Global.player_volume_level:
+				Global.player_volume_level = move_toward(Global.player_volume_level, speed_rate, 0.025)
+		else:
+			Global.player_volume_level = 0
 	
 	move_and_slide()
 	

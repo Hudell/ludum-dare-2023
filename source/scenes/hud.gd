@@ -21,9 +21,8 @@ func player_caught():
 	$Caught.visible = true
 
 func _on_restart_button_pressed():
-	get_tree().paused = false
 	$Caught.visible = false
-	Global.change_map(Global.map_name)
+	Global.restart()
 
 func player_in_dog_range():
 	$DogGauge.visible = Global.in_dog_range
