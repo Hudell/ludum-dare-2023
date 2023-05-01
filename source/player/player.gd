@@ -19,7 +19,6 @@ extends CharacterBody2D
 					set_direction(Vector2.UP)
 
 const ACCELERATION = 100.0
-const FRICTION = 500.0
 const BASE_SPEED = 70
 
 var max_speed = BASE_SPEED
@@ -42,6 +41,9 @@ func _ready():
 	update_direction()
 
 func _physics_process(delta):
+	if Engine.is_editor_hint():
+		return
+
 	match state:
 		MOVE:
 			move_state(delta)
@@ -64,11 +66,10 @@ func move_state(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		# Apply friction in any direction that became zero
 		if input_vector.x == 0:
-			velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
+			velocity.x = 0
 		elif input_vector.y == 0:
-			velocity.y = move_toward(velocity.y, 0, FRICTION * delta)
+			velocity.y = 0
 		
 		last_direction = input_vector
 		update_direction()
@@ -77,12 +78,11 @@ func move_state(delta):
 		velocity = velocity.move_toward(input_vector * max_speed, ACCELERATION * delta)
 	else:
 		animationState.travel("Idle")
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	
-	if !Engine.is_editor_hint():
-		var speed_rate = velocity.length() / max_speed
-		if speed_rate != Global.player_volume_level:
-			Global.player_volume_level = speed_rate
+		velocity = Vector2.ZERO
+
+	var speed_rate = velocity.length() / max_speed
+	if speed_rate != Global.player_volume_level:
+		Global.player_volume_level = speed_rate
 	
 	move_and_slide()
 	
