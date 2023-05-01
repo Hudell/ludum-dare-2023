@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0nkyb3vc6rpn"]
+[gd_scene load_steps=8 format=3 uid="uid://c0nkyb3vc6rpn"]
 
 [ext_resource type="PackedScene" uid="uid://d30fr6vnokm48" path="res://source/map/map.tscn" id="1_nk5kv"]
 [ext_resource type="PackedScene" uid="uid://lj556bic6wni" path="res://source/npc.tscn" id="2_tr5pa"]
 [ext_resource type="PackedScene" uid="uid://bmtr0w8oy0x6f" path="res://source/map/route_point.tscn" id="3_6y6ek"]
 [ext_resource type="Texture2D" uid="uid://0hvtpoowixr6" path="res://assets/img/npc2.png" id="3_ak0r5"]
 [ext_resource type="PackedScene" uid="uid://dhtvq0bluivp6" path="res://source/map/house.tscn" id="4_5ho55"]
+[ext_resource type="PackedScene" uid="uid://dnhxhnmlrp60l" path="res://source/dog.tscn" id="5_boa4p"]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_uae0r"]
 
@@ -52,6 +53,9 @@ metadata/_edit_lock_ = true
 
 [node name="House" parent="Objects" index="2" instance=ExtResource("4_5ho55")]
 position = Vector2(676, 135)
+
+[node name="Dog" parent="Objects" index="3" instance=ExtResource("5_boa4p")]
+position = Vector2(448, 79)
 
 [node name="MapEdges" parent="." index="5"]
 visible = true
