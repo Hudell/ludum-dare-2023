@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://btc0b1p2uu504"]
+[gd_scene load_steps=11 format=3 uid="uid://btc0b1p2uu504"]
 
 [ext_resource type="Texture2D" uid="uid://dad1xv78bm7nc" path="res://assets/img/gauge.png" id="1_5q34b"]
 [ext_resource type="Script" path="res://source/scenes/hud.gd" id="1_jhyvj"]
 [ext_resource type="Texture2D" uid="uid://d2xoq6s68hehl" path="res://assets/img/dog_gauge_frame.png" id="2_d754p"]
+[ext_resource type="Texture2D" uid="uid://b8a50d3ltq65d" path="res://assets/img/scroll.png" id="4_gfq22"]
+[ext_resource type="Texture2D" uid="uid://dgoobx5gq71sm" path="res://assets/img/caught.png" id="5_1jhst"]
+[ext_resource type="StyleBox" uid="uid://jijxnesvq76p" path="res://resources/styles/wooden_button.tres" id="6_f371n"]
+[ext_resource type="StyleBox" uid="uid://iog8abwr1sn1" path="res://resources/styles/wooden_button_hover.tres" id="7_5d4qe"]
+[ext_resource type="Theme" uid="uid://bts83yh3dwsti" path="res://resources/themes/main.tres" id="7_ormvh"]
+[ext_resource type="StyleBox" uid="uid://cp5tsdn12y453" path="res://resources/styles/wooden_button_focus.tres" id="8_6x688"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0kkpl"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_jhyvj")
@@ -29,3 +37,46 @@ offset_bottom = 27.0
 texture = ExtResource("2_d754p")
 stretch_mode = 2
 metadata/_edit_lock_ = true
+
+[node name="Caught" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 71.0
+offset_top = 26.0
+offset_right = 111.0
+offset_bottom = 66.0
+theme = ExtResource("7_ormvh")
+
+[node name="Scroll" type="NinePatchRect" parent="Caught"]
+layout_mode = 0
+offset_right = 184.0
+offset_bottom = 89.0
+texture = ExtResource("4_gfq22")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="Caught/Scroll"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 37.0
+offset_right = 156.0
+offset_bottom = 54.0
+texture = ExtResource("5_1jhst")
+stretch_mode = 2
+
+[node name="RestartButton" type="Button" parent="Caught"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 85.0
+offset_right = 132.0
+offset_bottom = 115.0
+theme_override_colors/font_pressed_color = Color(0.258824, 0.258824, 0.258824, 1)
+theme_override_styles/normal = ExtResource("6_f371n")
+theme_override_styles/hover = ExtResource("7_5d4qe")
+theme_override_styles/pressed = ExtResource("8_6x688")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0kkpl")
+text = "Restart"
