@@ -161,15 +161,15 @@ func stop_route_timer():
 
 func on_reach_point(point, is_route = true):
 	match point.direction_to_face:
-		'left':
+		"Left":
 			set_direction(Vector2.LEFT)
-		'right':
+		"Right":
 			set_direction(Vector2.RIGHT)
-		'down':
+		"Down":
 			set_direction(Vector2.DOWN)
-		'up':
+		"Up":
 			set_direction(Vector2.UP)
-		'free':
+		"Free":
 			queue_free()
 
 	start_route_timer(point.min_seconds_to_stay, point.max_seconds_to_stay, point.skip_chance)
