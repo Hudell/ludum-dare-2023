@@ -39,6 +39,8 @@ stretch_mode = 2
 metadata/_edit_lock_ = true
 
 [node name="Caught" type="Control" parent="."]
+process_mode = 2
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 71.0
@@ -80,3 +82,5 @@ theme_override_styles/hover = ExtResource("7_5d4qe")
 theme_override_styles/pressed = ExtResource("8_6x688")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0kkpl")
 text = "Restart"
+
+[connection signal="pressed" from="Caught/RestartButton" to="." method="_on_restart_button_pressed"]

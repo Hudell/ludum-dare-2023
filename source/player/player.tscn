@@ -264,8 +264,8 @@ tree_root = SubResource("AnimationNodeStateMachine_w4i0e")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_2ecbx")
-parameters/Idle/blend_position = Vector2(0, -1)
-parameters/Walk/blend_position = Vector2(0, -1)
+parameters/Idle/blend_position = Vector2(0, 1)
+parameters/Walk/blend_position = Vector2(0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

@@ -190,7 +190,7 @@ physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_s1npd")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcag4"]
-size = Vector2(10, 882)
+size = Vector2(10, 640)
 
 [node name="Map" type="TileMap"]
 y_sort_enabled = true
