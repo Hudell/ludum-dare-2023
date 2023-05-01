@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0nkyb3vc6rpn"]
+
+[ext_resource type="PackedScene" uid="uid://d30fr6vnokm48" path="res://source/map/map.tscn" id="1_nk5kv"]
+[ext_resource type="PackedScene" uid="uid://lj556bic6wni" path="res://source/npc.tscn" id="2_tr5pa"]
+[ext_resource type="PackedScene" uid="uid://bmtr0w8oy0x6f" path="res://source/map/route_point.tscn" id="3_6y6ek"]
+[ext_resource type="Texture2D" uid="uid://0hvtpoowixr6" path="res://assets/img/npc2.png" id="3_ak0r5"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_uae0r"]
+
+[node name="SampleStage" instance=ExtResource("1_nk5kv")]
+position = Vector2(0, 1)
+layer_0/tile_data = PackedInt32Array(983063, 196610, 0, 1114139, 196610, 0, 1507350, 196610, 0, 1572907, 196610, 0, 1638447, 196610, 0, 1376301, 524290, 0, 1376303, 524290, 0, 1310766, 524290, 0, 1376295, 589826, 0, 1245224, 589826, 0, 1376297, 589826, 0, 65537, 458754, 0, 458754, 458754, 0, 131083, 458754, 0, 524293, 589826, 0, 262152, 589826, 0, 131078, 196610, 0, 1179668, 0, 8, 720908, 0, 8, 1179663, 0, 8, 1179658, 196608, 8, 1048589, 196608, 8, 851983, 196608, 8, 655383, 2, 3, 655384, 2, 3, 655385, 2, 3, 655386, 2, 3, 655387, 2, 3, 655382, 2, 3)
+layer_1/tile_data = PackedInt32Array(1179668, 0, 4, 1179663, 0, 4, 1048589, 196608, 4, 1179658, 196608, 0, 851983, 196608, 4, 720908, 0, 0)
+
+[node name="MapArea" parent="." index="0"]
+offset_right = 882.0
+offset_bottom = 528.0
+
+[node name="Fences" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(917515, 131073, 1, 851979, 131073, 0, 786443, 131073, 0, 720907, 131073, 0, 917514, 131073, 1, 917512, 131073, 1, 917513, 131073, 1, 917511, 65537, 1, 851975, 131073, 0, 786439, 131073, 0, 720903, 131073, 0, 655371, 1, 1, 655370, 131073, 1, 655369, 131073, 1, 655368, 131073, 1, 655367, 131073, 0)
+
+[node name="Player" parent="." index="2"]
+z_index = 1
+position = Vector2(64, 72)
+
+[node name="Camera2D" parent="Player" index="4"]
+position = Vector2(1, -8)
+limit_right = 882
+limit_bottom = 528
+
+[node name="Objects" parent="." index="3"]
+y_sort_enabled = true
+
+[node name="NPC" parent="Objects" index="0" instance=ExtResource("2_tr5pa")]
+position = Vector2(224, 63)
+route = NodePath("../../Routes/TesteRota")
+
+[node name="NPC2" parent="Objects" index="1" instance=ExtResource("2_tr5pa")]
+position = Vector2(224, 18)
+route = NodePath("../../Routes/TesteRota")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" parent="Objects/NPC2" index="0"]
+texture = ExtResource("3_ak0r5")
+
+[node name="AnimationTree" parent="Objects/NPC2" index="2"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_uae0r")
+
+[node name="MapEdges" parent="." index="5"]
+visible = true
+
+[node name="LeftEdge" parent="MapEdges" index="0"]
+position = Vector2(-5, 264)
+
+[node name="TopEdge" parent="MapEdges" index="1"]
+position = Vector2(441, -6)
+
+[node name="RightEdge" parent="MapEdges" index="2"]
+position = Vector2(887, 264)
+
+[node name="BottomEdge" parent="MapEdges" index="3"]
+position = Vector2(441, 533)
+
+[node name="TesteRota" type="Node2D" parent="Routes" index="0"]
+
+[node name="RoutePoint" parent="Routes/TesteRota" index="0" instance=ExtResource("3_6y6ek")]
+position = Vector2(225, 98)
+
+[node name="RoutePoint2" parent="Routes/TesteRota" index="1" instance=ExtResource("3_6y6ek")]
+position = Vector2(298, 96)
+
+[node name="RoutePoint3" parent="Routes/TesteRota" index="2" instance=ExtResource("3_6y6ek")]
+position = Vector2(299, 160)
+
+[node name="RoutePoint4" parent="Routes/TesteRota" index="3" instance=ExtResource("3_6y6ek")]
+position = Vector2(225, 161)
+
+[editable path="Objects/NPC2"]
