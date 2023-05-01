@@ -241,6 +241,9 @@ height = 14.0
 [node name="NPC" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
+collision_layer = 4
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_svqrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
