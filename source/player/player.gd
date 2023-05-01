@@ -18,7 +18,7 @@ extends CharacterBody2D
 				"Up":
 					set_direction(Vector2.UP)
 
-const ACCELERATION = 100.0
+const ACCELERATION = 150.0
 const BASE_SPEED = 70
 
 var max_speed = BASE_SPEED
@@ -80,9 +80,12 @@ func move_state(delta):
 		animationState.travel("Idle")
 		velocity = Vector2.ZERO
 
-	var speed_rate = velocity.length() / max_speed
-	if speed_rate != Global.player_volume_level:
-		Global.player_volume_level = speed_rate
+	if Global.in_dog_range:
+		var speed_rate = velocity.length() / max_speed
+		if speed_rate != Global.player_volume_level:
+			Global.player_volume_level = move_toward(Global.player_volume_level, speed_rate, 0.025)
+	else:
+		Global.player_volume_level = 0
 	
 	move_and_slide()
 	

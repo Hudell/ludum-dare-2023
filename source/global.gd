@@ -5,6 +5,11 @@ var map_name = ''
 
 var is_loading = false
 var is_new_game = false
+var in_dog_range = false:
+	set(value):
+		in_dog_range = value
+		emit_signal("in_dog_range_change")
+
 var player_volume_level = 0.0:
 	set(value):
 		if value != player_volume_level:
@@ -14,6 +19,7 @@ var player_volume_level = 0.0:
 signal map_changed
 signal player_volume_changed
 signal player_caught
+signal in_dog_range_change
 
 func new_game():
 	map_spawn_name = 'default'

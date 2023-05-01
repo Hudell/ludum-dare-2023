@@ -175,7 +175,6 @@ position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_1ceee")
 
 [node name="PlayerDetector" parent="." instance=ExtResource("2_72pmv")]
-monitoring = false
 
 [node name="CollisionPolygon2D" parent="PlayerDetector" index="0"]
 polygon = PackedVector2Array()
@@ -186,10 +185,11 @@ shape = SubResource("CircleShape2D_8xaly")
 
 [node name="Exclamation" type="AnimatedSprite2D" parent="."]
 z_index = 10
-position = Vector2(0, -37)
+position = Vector2(0, -19)
 sprite_frames = SubResource("SpriteFrames_jviqa")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="player_lost" from="PlayerDetector" to="." method="_on_player_detector_player_lost"]
 [connection signal="player_seen" from="PlayerDetector" to="." method="_on_player_detector_player_seen"]
 [connection signal="animation_finished" from="Exclamation" to="." method="_on_exclamation_animation_finished"]
 
