@@ -72,9 +72,6 @@ func _physics_process(_delta):
 		animationState.travel("Idle")
 
 func process_route():
-#	if !route_enabled:
-#		return
-
 	if !routeTimer.is_stopped():
 		return
 
@@ -109,12 +106,9 @@ func move_towards_point(point, is_route = true):
 	velocity = direction * max_speed
 	return true
 
-func progress_route(first_call = true):
+func progress_route(first_call = true, teleport = false):
 	if !routeTimer.is_stopped():
 		return
-	
-#	if !visibilityNotifier.is_on_screen():
-#		return
 	
 	if route_node == null || route_node.get_child_count() == 0:
 		route_point = null
@@ -130,6 +124,8 @@ func progress_route(first_call = true):
 		
 	route_point = route_node.get_child(route_index)
 	if 'is_route_point' in route_point:
+		if teleport:
+			global_position = route_point.global_position
 		return true
 
 	if first_call:
@@ -139,7 +135,7 @@ func progress_route(first_call = true):
 		route_index = -1
 		return false
 	
-	return progress_route(false)
+	return progress_route(false, teleport)
 
 func start_route_timer(min_seconds, max_seconds, skip_chance):
 	if !routeTimer.is_stopped():
@@ -176,6 +172,8 @@ func on_reach_point(point, _is_route = true):
 			set_direction(Vector2.UP)
 		"Free":
 			queue_free()
+		"Teleport":
+			return progress_route(true, true)
 
 	start_route_timer(point.min_seconds_to_stay, point.max_seconds_to_stay, point.skip_chance)
 #	if is_route:

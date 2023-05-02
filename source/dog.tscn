@@ -158,6 +158,8 @@ animations = [{
 }]
 
 [node name="Dog" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_1ccjv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

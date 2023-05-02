@@ -37,12 +37,12 @@ signal player_got_box
 
 func new_game():
 	map_spawn_name = 'default'
-	map_name = '1'
+	map_name = '2'
 	caught_by_dog = false
 	is_new_game = true
 	is_loading = true
 	got_box = false
-	current_stage = 1
+	current_stage = 2
 
 func change_map(new_map, spawn_name = 'default'):
 	if get_tree().paused:

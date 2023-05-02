@@ -208,6 +208,17 @@ texture = ExtResource("2_onitn")
 14:0/0 = 0
 14:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:0/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 8, -8, 8)
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, -8, 7, -8, 7, 8, 2, 8)
+2:4/0 = 0
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_krv1t"]
 physics_layer_0/collision_layer = 1
@@ -344,12 +355,14 @@ visible = false
 
 [node name="LeftEdge" type="StaticBody2D" parent="MapEdges"]
 position = Vector2(-5, 179.5)
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapEdges/LeftEdge"]
 shape = SubResource("RectangleShape2D_kcag4")
 
 [node name="TopEdge" type="StaticBody2D" parent="MapEdges"]
 position = Vector2(320, -6)
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapEdges/TopEdge"]
 rotation = 1.5708
@@ -357,12 +370,14 @@ shape = SubResource("RectangleShape2D_kcag4")
 
 [node name="RightEdge" type="StaticBody2D" parent="MapEdges"]
 position = Vector2(645, 179.5)
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapEdges/RightEdge"]
 shape = SubResource("RectangleShape2D_kcag4")
 
 [node name="BottomEdge" type="StaticBody2D" parent="MapEdges"]
 position = Vector2(320, 364)
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapEdges/BottomEdge"]
 rotation = 1.5708
