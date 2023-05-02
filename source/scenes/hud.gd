@@ -23,6 +23,7 @@ func set_volume_level(volume):
 func player_caught():
 	get_tree().paused = true
 	$Caught.visible = true
+	$Caught/RestartButton.grab_focus()
 
 func _on_restart_button_pressed():
 	$Caught.visible = false
@@ -38,9 +39,13 @@ func _on_next_button_pressed():
 func show_success():
 	get_tree().paused = true
 	if Global.current_stage == 2:
+		$AnimationPlayer.play("game_finished")
 		$FinalSuccess.visible = true
+		$FinalSuccess/ExitButton.grab_focus()
 	else:
+		$AnimationPlayer.play("stage_finished")
 		$Success.visible = true
+		$Success/NextButton.grab_focus()
 	
 func _on_start_button_pressed():
 	$Tutorial1.visible = false
@@ -50,8 +55,10 @@ func _on_start_button_pressed():
 func show_tutorial():
 	if Global.current_stage == 1:
 		$Tutorial1.visible = true
+		$Tutorial1/StartButton.grab_focus()
 	else:
 		$Tutorial2.visible = true
+		$Tutorial2/StartButton.grab_focus()
 	get_tree().paused = true
 
 func _on_exit_button_pressed():

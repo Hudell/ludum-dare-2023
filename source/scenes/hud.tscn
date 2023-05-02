@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://btc0b1p2uu504"]
+[gd_scene load_steps=21 format=3 uid="uid://btc0b1p2uu504"]
 
 [ext_resource type="Texture2D" uid="uid://dad1xv78bm7nc" path="res://assets/img/gauge.png" id="1_5q34b"]
 [ext_resource type="Script" path="res://source/scenes/hud.gd" id="1_jhyvj"]
@@ -10,12 +10,78 @@
 [ext_resource type="Theme" uid="uid://bts83yh3dwsti" path="res://resources/themes/main.tres" id="7_ormvh"]
 [ext_resource type="StyleBox" uid="uid://cp5tsdn12y453" path="res://resources/styles/wooden_button_focus.tres" id="8_6x688"]
 [ext_resource type="Texture2D" uid="uid://cucxhd3k4q32r" path="res://assets/img/success.png" id="10_urdi6"]
+[ext_resource type="AudioStream" uid="uid://dkohxdwjejfpp" path="res://assets/sfx/levelup.wav" id="11_2oq37"]
+[ext_resource type="AudioStream" uid="uid://bpn3ejhtejdcc" path="res://assets/sfx/success.wav" id="12_oqiej"]
+[ext_resource type="AudioStream" uid="uid://ca0eg6baa7jv7" path="res://assets/sfx/lose.wav" id="13_8ocjb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0kkpl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o08co"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu4ch"]
+
+[sub_resource type="Animation" id="Animation_68yms"]
+resource_name = "game_finished"
+length = 4.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_2oq37")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_uxk0g"]
+resource_name = "stage_finished"
+length = 3.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_oqiej")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_ceo2s"]
+resource_name = "caught"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_8ocjb")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tetto"]
+_data = {
+"caught": SubResource("Animation_ceo2s"),
+"game_finished": SubResource("Animation_68yms"),
+"stage_finished": SubResource("Animation_uxk0g")
+}
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_jhyvj")
@@ -162,9 +228,9 @@ texture = ExtResource("10_urdi6")
 stretch_mode = 2
 
 [node name="ExitButton" type="Button" parent="FinalSuccess"]
-offset_left = 289.0
+offset_left = 290.0
 offset_top = 248.0
-offset_right = 359.0
+offset_right = 360.0
 offset_bottom = 287.0
 theme_override_colors/font_pressed_color = Color(0.258824, 0.258824, 0.258824, 1)
 theme_override_styles/normal = ExtResource("6_f371n")
@@ -175,10 +241,10 @@ text = "Exit"
 
 [node name="Label" type="Label" parent="FinalSuccess"]
 layout_mode = 0
-offset_left = 270.0
-offset_top = 198.0
-offset_right = 382.0
-offset_bottom = 224.0
+offset_left = 268.0
+offset_top = 201.0
+offset_right = 380.0
+offset_bottom = 227.0
 theme = ExtResource("7_ormvh")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Thanks for Playing"
@@ -192,9 +258,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Scroll" type="NinePatchRect" parent="Tutorial1"]
-offset_left = 259.0
+offset_left = 218.0
 offset_top = 118.0
-offset_right = 462.0
+offset_right = 421.0
 offset_bottom = 242.0
 texture = ExtResource("4_gfq22")
 patch_margin_left = 32
@@ -218,9 +284,9 @@ autowrap_mode = 3
 clip_text = true
 
 [node name="StartButton" type="Button" parent="Tutorial1"]
-offset_left = 325.0
+offset_left = 290.0
 offset_top = 246.0
-offset_right = 395.0
+offset_right = 360.0
 offset_bottom = 285.0
 theme_override_colors/font_pressed_color = Color(0.258824, 0.258824, 0.258824, 1)
 theme_override_styles/normal = ExtResource("6_f371n")
@@ -238,9 +304,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Scroll" type="NinePatchRect" parent="Tutorial2"]
-offset_left = 259.0
+offset_left = 218.0
 offset_top = 118.0
-offset_right = 462.0
+offset_right = 421.0
 offset_bottom = 242.0
 texture = ExtResource("4_gfq22")
 patch_margin_left = 32
@@ -264,9 +330,9 @@ autowrap_mode = 3
 clip_text = true
 
 [node name="StartButton" type="Button" parent="Tutorial2"]
-offset_left = 325.0
+offset_left = 290.0
 offset_top = 246.0
-offset_right = 395.0
+offset_right = 360.0
 offset_bottom = 285.0
 theme_override_colors/font_pressed_color = Color(0.258824, 0.258824, 0.258824, 1)
 theme_override_styles/normal = ExtResource("6_f371n")
@@ -274,6 +340,15 @@ theme_override_styles/hover = ExtResource("7_5d4qe")
 theme_override_styles/pressed = ExtResource("8_6x688")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fu4ch")
 text = "Start"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_tetto")
+}
 
 [connection signal="pressed" from="Caught/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Success/NextButton" to="." method="_on_next_button_pressed"]

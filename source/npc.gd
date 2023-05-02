@@ -184,6 +184,7 @@ func on_reach_point(point, _is_route = true):
 func _on_player_detector_player_seen():
 	$Exclamation.play("default")
 	$Exclamation.visible = true
+	$AudioStreamPlayer.play()
 
 func _on_exclamation_animation_finished():
 	$Exclamation.visible = false

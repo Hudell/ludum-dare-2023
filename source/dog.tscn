@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://dnhxhnmlrp60l"]
+[gd_scene load_steps=23 format=3 uid="uid://dnhxhnmlrp60l"]
 
 [ext_resource type="Script" path="res://source/dog.gd" id="1_1ccjv"]
 [ext_resource type="Texture2D" uid="uid://dy6iyoerwx7xy" path="res://assets/img/dog.png" id="1_qd1kl"]
 [ext_resource type="PackedScene" uid="uid://csr72687hk4ee" path="res://source/player/player_detector.tscn" id="2_72pmv"]
+[ext_resource type="AudioStream" uid="uid://cy01jsiybv7r8" path="res://assets/sfx/barking.wav" id="3_wiytj"]
 [ext_resource type="Texture2D" uid="uid://dl8l17lvf63bg" path="res://assets/img/exclamation.png" id="4_lwb6t"]
 [ext_resource type="Texture2D" uid="uid://dbwwxis1f6ppf" path="res://assets/img/dog_radius.png" id="5_7rasi"]
 
@@ -51,6 +52,21 @@ tracks/1/keys = {
 "method": &"got_caught"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_wiytj")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ujrtv"]
 resource_name = "sleep"
@@ -196,6 +212,8 @@ material = SubResource("CanvasItemMaterial_vulqp")
 position = Vector2(-70, -69)
 texture = ExtResource("5_7rasi")
 centered = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="player_lost" from="PlayerDetector" to="." method="_on_player_detector_player_lost"]

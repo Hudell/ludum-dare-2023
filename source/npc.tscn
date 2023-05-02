@@ -1,10 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://lj556bic6wni"]
+[gd_scene load_steps=42 format=3 uid="uid://lj556bic6wni"]
 
 [ext_resource type="Script" path="res://source/npc.gd" id="1_svqrw"]
 [ext_resource type="Texture2D" uid="uid://cx0g3ud5dravy" path="res://assets/img/npc1.png" id="2_pfuus"]
 [ext_resource type="PackedScene" uid="uid://csr72687hk4ee" path="res://source/player/player_detector.tscn" id="3_f77qh"]
 [ext_resource type="Texture2D" uid="uid://dl8l17lvf63bg" path="res://assets/img/exclamation.png" id="4_jdj8u"]
 [ext_resource type="Texture2D" uid="uid://cuxp2p4n8epoc" path="res://assets/img/detection_range.png" id="4_sln0u"]
+[ext_resource type="AudioStream" uid="uid://ca0eg6baa7jv7" path="res://assets/sfx/lose.wav" id="6_vv18j"]
 
 [sub_resource type="Animation" id="Animation_kni5c"]
 resource_name = "IdleDown"
@@ -463,6 +464,9 @@ centered = false
 z_index = 10
 position = Vector2(0, -37)
 sprite_frames = SubResource("SpriteFrames_2sxj3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vv18j")
 
 [connection signal="player_seen" from="Pivot/PlayerDetector" to="." method="_on_player_detector_player_seen"]
 [connection signal="animation_finished" from="Exclamation" to="." method="_on_exclamation_animation_finished"]

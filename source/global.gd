@@ -10,6 +10,7 @@ var got_box = false:
 	set(value):
 		got_box = value
 		if value:
+			$AudioStreamPlayer.play()
 			emit_signal("player_got_box")
 
 var in_yard = false:

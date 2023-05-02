@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cignb8i0787bf"]
+[gd_scene load_steps=3 format=3 uid="uid://cignb8i0787bf"]
 
 [ext_resource type="Script" path="res://source/global.gd" id="1_4ygvg"]
+[ext_resource type="AudioStream" uid="uid://bohcrawg2dshm" path="res://assets/sfx/collect.wav" id="2_l0i4v"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_4ygvg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_l0i4v")
