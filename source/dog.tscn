@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dnhxhnmlrp60l"]
+[gd_scene load_steps=22 format=3 uid="uid://dnhxhnmlrp60l"]
 
 [ext_resource type="Script" path="res://source/dog.gd" id="1_1ccjv"]
 [ext_resource type="Texture2D" uid="uid://dy6iyoerwx7xy" path="res://assets/img/dog.png" id="1_qd1kl"]
 [ext_resource type="PackedScene" uid="uid://csr72687hk4ee" path="res://source/player/player_detector.tscn" id="2_72pmv"]
 [ext_resource type="Texture2D" uid="uid://dl8l17lvf63bg" path="res://assets/img/exclamation.png" id="4_lwb6t"]
+[ext_resource type="Texture2D" uid="uid://dbwwxis1f6ppf" path="res://assets/img/dog_radius.png" id="5_7rasi"]
 
 [sub_resource type="Animation" id="Animation_06myn"]
 length = 0.001
@@ -98,7 +99,7 @@ _data = {
 size = Vector2(21, 25)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xaly"]
-radius = 78.0256
+radius = 70.0071
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xognh"]
 atlas = ExtResource("4_lwb6t")
@@ -157,6 +158,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vulqp"]
+blend_mode = 1
+
 [node name="Dog" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
@@ -185,6 +189,13 @@ shape = SubResource("CircleShape2D_8xaly")
 z_index = 10
 position = Vector2(0, -19)
 sprite_frames = SubResource("SpriteFrames_jviqa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.352941)
+material = SubResource("CanvasItemMaterial_vulqp")
+position = Vector2(-70, -69)
+texture = ExtResource("5_7rasi")
+centered = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="player_lost" from="PlayerDetector" to="." method="_on_player_detector_player_lost"]
