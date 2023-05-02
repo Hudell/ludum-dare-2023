@@ -23,9 +23,6 @@ func change_map(new_map):
 		return
 	
 	get_tree().paused = true
-#	if !Global.is_loading:
-#		$AnimationPlayer.play("Circle")
-#		await $AnimationPlayer.animation_finished
 	call_deferred("replace_map")
 
 func replace_map():
@@ -51,12 +48,6 @@ func add_new_map():
 	next_map = null
 	
 	get_tree().paused = false
-#	if !Global.is_new_game:
-#		$AnimationPlayer.play_backwards("Circle")
-#		await $AnimationPlayer.animation_finished
-
 	Global.is_loading = false
 	Global.is_new_game = false
-
-	
-	
+	Global.emit_signal("map_started")

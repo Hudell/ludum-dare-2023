@@ -130,6 +130,58 @@ theme_override_styles/pressed = ExtResource("8_6x688")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o08co")
 text = "Next"
 
+[node name="FinalSuccess" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scroll" type="NinePatchRect" parent="FinalSuccess"]
+offset_left = 239.0
+offset_top = 134.0
+offset_right = 401.0
+offset_bottom = 250.0
+texture = ExtResource("4_gfq22")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="FinalSuccess/Scroll"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 37.0
+offset_right = 129.0
+offset_bottom = 64.0
+texture = ExtResource("10_urdi6")
+stretch_mode = 2
+
+[node name="ExitButton" type="Button" parent="FinalSuccess"]
+offset_left = 289.0
+offset_top = 248.0
+offset_right = 359.0
+offset_bottom = 287.0
+theme_override_colors/font_pressed_color = Color(0.258824, 0.258824, 0.258824, 1)
+theme_override_styles/normal = ExtResource("6_f371n")
+theme_override_styles/hover = ExtResource("7_5d4qe")
+theme_override_styles/pressed = ExtResource("8_6x688")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o08co")
+text = "Exit"
+
+[node name="Label" type="Label" parent="FinalSuccess"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 198.0
+offset_right = 382.0
+offset_bottom = 224.0
+theme = ExtResource("7_ormvh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Thanks for Playing"
+
 [node name="Tutorial1" type="Control" parent="."]
 process_mode = 2
 visible = false
@@ -224,5 +276,6 @@ text = "Start"
 
 [connection signal="pressed" from="Caught/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Success/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="FinalSuccess/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Tutorial1/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Tutorial2/StartButton" to="." method="_on_start_button_pressed"]

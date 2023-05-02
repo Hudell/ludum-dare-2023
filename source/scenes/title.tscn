@@ -22,9 +22,9 @@ script = ExtResource("1_cko0o")
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 347.0
+offset_left = 307.0
 offset_top = 180.0
-offset_right = 388.0
+offset_right = 348.0
 offset_bottom = 246.0
 theme = ExtResource("2_bkyt5")
 
@@ -45,7 +45,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_u5tf1")
 text = "Exit"
 
 [node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(370, 115)
+position = Vector2(330, 115)
 texture = ExtResource("6_nc4ap")
 
 [connection signal="button_up" from="Buttons/Play" to="." method="_on_play_button_button_up"]

@@ -35,6 +35,7 @@ signal in_dog_range_changed
 signal in_yard_changed
 signal player_got_box
 signal stage_complete
+signal map_started
 
 func new_game():
 	map_spawn_name = 'default'
