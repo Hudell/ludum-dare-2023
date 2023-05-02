@@ -25,6 +25,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(2, 2)
 
 [node name="Gauge" type="TextureRect" parent="DogGauge"]
 layout_mode = 0
