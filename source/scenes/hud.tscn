@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://btc0b1p2uu504"]
+[gd_scene load_steps=14 format=3 uid="uid://btc0b1p2uu504"]
 
 [ext_resource type="Texture2D" uid="uid://dad1xv78bm7nc" path="res://assets/img/gauge.png" id="1_5q34b"]
 [ext_resource type="Script" path="res://source/scenes/hud.gd" id="1_jhyvj"]
@@ -9,8 +9,13 @@
 [ext_resource type="StyleBox" uid="uid://iog8abwr1sn1" path="res://resources/styles/wooden_button_hover.tres" id="7_5d4qe"]
 [ext_resource type="Theme" uid="uid://bts83yh3dwsti" path="res://resources/themes/main.tres" id="7_ormvh"]
 [ext_resource type="StyleBox" uid="uid://cp5tsdn12y453" path="res://resources/styles/wooden_button_focus.tres" id="8_6x688"]
+[ext_resource type="Texture2D" uid="uid://cucxhd3k4q32r" path="res://assets/img/success.png" id="10_urdi6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0kkpl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o08co"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu4ch"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_jhyvj")
@@ -83,4 +88,141 @@ theme_override_styles/pressed = ExtResource("8_6x688")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0kkpl")
 text = "Restart"
 
+[node name="Success" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scroll" type="NinePatchRect" parent="Success"]
+offset_left = 239.0
+offset_top = 134.0
+offset_right = 401.0
+offset_bottom = 227.0
+texture = ExtResource("4_gfq22")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="Success/Scroll"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 37.0
+offset_right = 129.0
+offset_bottom = 64.0
+texture = ExtResource("10_urdi6")
+stretch_mode = 2
+
+[node name="NextButton" type="Button" parent="Success"]
+offset_left = 290.0
+offset_top = 224.0
+offset_right = 360.0
+offset_bottom = 263.0
+theme_override_colors/font_pressed_color = Color(0.258824, 0.258824, 0.258824, 1)
+theme_override_styles/normal = ExtResource("6_f371n")
+theme_override_styles/hover = ExtResource("7_5d4qe")
+theme_override_styles/pressed = ExtResource("8_6x688")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o08co")
+text = "Next"
+
+[node name="Tutorial1" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scroll" type="NinePatchRect" parent="Tutorial1"]
+offset_left = 259.0
+offset_top = 118.0
+offset_right = 462.0
+offset_bottom = 242.0
+texture = ExtResource("4_gfq22")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Label" type="Label" parent="Tutorial1/Scroll"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 29.0
+offset_right = 179.0
+offset_bottom = 97.0
+theme = ExtResource("7_ormvh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Get the box and come back to this spot without raising any suspicions."
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+
+[node name="StartButton" type="Button" parent="Tutorial1"]
+offset_left = 325.0
+offset_top = 246.0
+offset_right = 395.0
+offset_bottom = 285.0
+theme_override_colors/font_pressed_color = Color(0.258824, 0.258824, 0.258824, 1)
+theme_override_styles/normal = ExtResource("6_f371n")
+theme_override_styles/hover = ExtResource("7_5d4qe")
+theme_override_styles/pressed = ExtResource("8_6x688")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fu4ch")
+text = "Start"
+
+[node name="Tutorial2" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scroll" type="NinePatchRect" parent="Tutorial2"]
+offset_left = 259.0
+offset_top = 118.0
+offset_right = 462.0
+offset_bottom = 242.0
+texture = ExtResource("4_gfq22")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Label" type="Label" parent="Tutorial2/Scroll"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 29.0
+offset_right = 179.0
+offset_bottom = 97.0
+theme = ExtResource("7_ormvh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Walk slowly when near the dog to avoid waking him up."
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+
+[node name="StartButton" type="Button" parent="Tutorial2"]
+offset_left = 325.0
+offset_top = 246.0
+offset_right = 395.0
+offset_bottom = 285.0
+theme_override_colors/font_pressed_color = Color(0.258824, 0.258824, 0.258824, 1)
+theme_override_styles/normal = ExtResource("6_f371n")
+theme_override_styles/hover = ExtResource("7_5d4qe")
+theme_override_styles/pressed = ExtResource("8_6x688")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fu4ch")
+text = "Start"
+
 [connection signal="pressed" from="Caught/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Success/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Tutorial1/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Tutorial2/StartButton" to="." method="_on_start_button_pressed"]

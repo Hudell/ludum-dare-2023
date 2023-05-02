@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c031j4aexprop"]
+[gd_scene load_steps=9 format=3 uid="uid://c031j4aexprop"]
 
 [ext_resource type="Script" path="res://source/scenes/title.gd" id="1_cko0o"]
+[ext_resource type="Theme" uid="uid://bts83yh3dwsti" path="res://resources/themes/main.tres" id="2_bkyt5"]
+[ext_resource type="StyleBox" uid="uid://jijxnesvq76p" path="res://resources/styles/wooden_button.tres" id="3_qeou5"]
+[ext_resource type="StyleBox" uid="uid://iog8abwr1sn1" path="res://resources/styles/wooden_button_hover.tres" id="4_36jn3"]
+[ext_resource type="StyleBox" uid="uid://cp5tsdn12y453" path="res://resources/styles/wooden_button_focus.tres" id="5_7bhn7"]
+[ext_resource type="Texture2D" uid="uid://crymaptp6b0iy" path="res://assets/img/logo.png" id="6_nc4ap"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_piaht"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u5tf1"]
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -13,16 +22,31 @@ script = ExtResource("1_cko0o")
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 41.0
-offset_bottom = 40.0
+offset_left = 347.0
+offset_top = 180.0
+offset_right = 388.0
+offset_bottom = 246.0
+theme = ExtResource("2_bkyt5")
 
 [node name="Play" type="Button" parent="Buttons"]
 layout_mode = 2
+theme_override_styles/normal = ExtResource("3_qeou5")
+theme_override_styles/hover = ExtResource("4_36jn3")
+theme_override_styles/pressed = ExtResource("5_7bhn7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_piaht")
 text = "Play"
 
 [node name="Exit" type="Button" parent="Buttons"]
 layout_mode = 2
+theme_override_styles/normal = ExtResource("3_qeou5")
+theme_override_styles/hover = ExtResource("4_36jn3")
+theme_override_styles/pressed = ExtResource("5_7bhn7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u5tf1")
 text = "Exit"
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(370, 115)
+texture = ExtResource("6_nc4ap")
 
 [connection signal="button_up" from="Buttons/Play" to="." method="_on_play_button_button_up"]
 [connection signal="button_up" from="Buttons/Exit" to="." method="_on_exit_button_button_up"]

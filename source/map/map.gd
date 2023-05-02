@@ -68,4 +68,4 @@ func _on_player_detector_player_lost():
 
 func _on_exit_player_seen():
 	if Global.got_box:
-		pass
+		Global.complete_stage()

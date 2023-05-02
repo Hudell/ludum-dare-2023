@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp241syickqw0"]
+[gd_scene load_steps=12 format=3 uid="uid://bp241syickqw0"]
 
 [ext_resource type="PackedScene" uid="uid://d30fr6vnokm48" path="res://source/map/map.tscn" id="1_dduxj"]
 [ext_resource type="PackedScene" uid="uid://lj556bic6wni" path="res://source/npc.tscn" id="2_0vav3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5hgsyvkqf5ey" path="res://source/map/house_2.tscn" id="3_57t7u"]
 [ext_resource type="PackedScene" uid="uid://bmtr0w8oy0x6f" path="res://source/map/route_point.tscn" id="4_4ad6m"]
 [ext_resource type="PackedScene" uid="uid://dsvby380vfrri" path="res://source/npc_2.tscn" id="5_m1sb0"]
+[ext_resource type="Texture2D" uid="uid://8uhyfgmek4hu" path="res://assets/img/car.png" id="6_daega"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1npd"]
 texture = ExtResource("2_cs1y0")
@@ -46,6 +47,9 @@ tile_size = Vector2i(22, 20)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_s1npd")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b1va"]
+size = Vector2(89, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oc1bx"]
 size = Vector2(5, 16)
@@ -100,6 +104,18 @@ route = NodePath("../../Routes/Npc2Route")
 
 [node name="Box" parent="Objects" index="3"]
 position = Vector2(365, 239)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Objects" index="4"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(119, 353)
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/StaticBody2D" index="0"]
+texture = ExtResource("6_daega")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/StaticBody2D" index="1"]
+position = Vector2(0.5, 10)
+shape = SubResource("RectangleShape2D_5b1va")
 
 [node name="LeftEdge" parent="MapEdges" index="0"]
 position = Vector2(-5, 247.5)
